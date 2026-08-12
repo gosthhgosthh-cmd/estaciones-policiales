@@ -15,48 +15,51 @@ st.write(
     " rutas y números de contacto."
 )
 
+# Logo oficial de la Policía Nacional de Honduras
+LOGO_POLICIA_HN = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_de_la_Polic%C3%ADa_Nacional_de_Honduras.svg/800px-Logo_de_la_Polic%C3%ADa_Nacional_de_Honduras.svg.png"
+
 ESTACIONES = [
     {
         "nombre": "Estación Policial Core 7 (Centro)",
         "lat": 14.1025,
         "lon": -87.2038,
         "telefono": "2222-1234 / 911",
-        "foto": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&auto=format&fit=crop&q=60",
+        "foto": LOGO_POLICIA_HN,
     },
     {
         "nombre": "Estación Policial Belén",
         "lat": 14.1120,
         "lon": -87.2180,
         "telefono": "2223-5678 / 911",
-        "foto": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500&auto=format&fit=crop&q=60",
+        "foto": LOGO_POLICIA_HN,
     },
     {
         "nombre": "Estación Policial Kennedy",
         "lat": 14.0750,
         "lon": -87.1650,
         "telefono": "2228-9012 / 911",
-        "foto": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&auto=format&fit=crop&q=60",
+        "foto": LOGO_POLICIA_HN,
     },
     {
         "nombre": "Estación Policial Subirana",
         "lat": 14.0980,
         "lon": -87.2080,
         "telefono": "2237-4321 / 911",
-        "foto": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&auto=format&fit=crop&q=60",
+        "foto": LOGO_POLICIA_HN,
     },
     {
         "nombre": "Estación Policial Loarque",
         "lat": 14.0320,
         "lon": -87.2250,
         "telefono": "2226-8765 / 911",
-        "foto": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&auto=format&fit=crop&q=60",
+        "foto": LOGO_POLICIA_HN,
     },
     {
         "nombre": "Estación Policial San Miguel",
         "lat": 14.0910,
         "lon": -87.1710,
         "telefono": "2236-1122 / 911",
-        "foto": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500&auto=format&fit=crop&q=60",
+        "foto": LOGO_POLICIA_HN,
     },
 ]
 
@@ -141,18 +144,11 @@ if st.button("🔍 Buscar 3 Estaciones Más Cercanas", use_container_width=True)
       col_img, col_info = st.columns([1, 2])
 
       with col_img:
-        if "foto" in est and est["foto"] and est["foto"] != "None":
-          try:
-            st.image(
-                est["foto"],
-                caption=f"Fachada de {est['nombre']}",
-                use_container_width=True,
-            )
-          except Exception as e:
-            st.error(f"Error al cargar la imagen: {e}")
-            st.info("Imagen no disponible temporalmente.")
-        else:
-          st.warning("⚠️ No hay imagen configurada.")
+        st.image(
+            est["foto"],
+            caption="Policía Nacional de Honduras",
+            use_container_width=True,
+        )
 
       with col_info:
         st.write(f"📞 **Teléfono Directo:** `{est['telefono']}`")
