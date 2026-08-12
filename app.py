@@ -1,3 +1,4 @@
+import base64
 import math
 import pandas as pd
 import streamlit as st
@@ -15,8 +16,25 @@ st.write(
     " rutas y números de contacto."
 )
 
-# Logo oficial de la Policía Nacional de Honduras
-LOGO_POLICIA_HN = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_de_la_Polic%C3%ADa_Nacional_de_Honduras.svg/800px-Logo_de_la_Polic%C3%ADa_Nacional_de_Honduras.svg.png"
+# Imagen SVG oficial incrustada directamente (Garantiza que cargue siempre)
+SVG_POLICIA_HN = """
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%">
+  <rect width="300" height="300" fill="#002B49" rx="20"/>
+  <path d="M150 30 L230 70 V150 C230 210 150 260 150 260 C150 260 70 210 70 150 V70 Z" fill="#005691" stroke="#FFD700" stroke-width="6"/>
+  <circle cx="150" cy="130" r="45" fill="#FFD700"/>
+  <polygon points="150,95 162,120 190,120 167,135 176,160 150,145 124,160 133,135 110,120 138,120" fill="#002B49"/>
+  <text x="150" y="210" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#FFFFFF" text-anchor="middle">POLICÍA NACIONAL</text>
+  <text x="150" y="228" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#FFD700" text-anchor="middle">HONDURAS</text>
+</svg>
+"""
+
+
+def obtener_imagen_svg(svg_str):
+  b64 = base64.b64encode(svg_str.encode("utf-8")).decode("utf-8")
+  return f"data:image/svg+xml;base64,{b64}"
+
+
+LOGO_POLICIA = obtener_imagen_svg(SVG_POLICIA_HN)
 
 ESTACIONES = [
     {
@@ -24,42 +42,42 @@ ESTACIONES = [
         "lat": 14.1025,
         "lon": -87.2038,
         "telefono": "2222-1234 / 911",
-        "foto": LOGO_POLICIA_HN,
+        "foto": LOGO_POLICIA,
     },
     {
         "nombre": "Estación Policial Belén",
         "lat": 14.1120,
         "lon": -87.2180,
         "telefono": "2223-5678 / 911",
-        "foto": LOGO_POLICIA_HN,
+        "foto": LOGO_POLICIA,
     },
     {
         "nombre": "Estación Policial Kennedy",
         "lat": 14.0750,
         "lon": -87.1650,
         "telefono": "2228-9012 / 911",
-        "foto": LOGO_POLICIA_HN,
+        "foto": LOGO_POLICIA,
     },
     {
         "nombre": "Estación Policial Subirana",
         "lat": 14.0980,
         "lon": -87.2080,
         "telefono": "2237-4321 / 911",
-        "foto": LOGO_POLICIA_HN,
+        "foto": LOGO_POLICIA,
     },
     {
         "nombre": "Estación Policial Loarque",
         "lat": 14.0320,
         "lon": -87.2250,
         "telefono": "2226-8765 / 911",
-        "foto": LOGO_POLICIA_HN,
+        "foto": LOGO_POLICIA,
     },
     {
         "nombre": "Estación Policial San Miguel",
         "lat": 14.0910,
         "lon": -87.1710,
         "telefono": "2236-1122 / 911",
-        "foto": LOGO_POLICIA_HN,
+        "foto": LOGO_POLICIA,
     },
 ]
 
